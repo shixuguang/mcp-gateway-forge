@@ -1,4 +1,4 @@
-# deploy mcp-context-forge to byoa
+### deploy mcp-context-forge to byoa
 
 ```
   cpd-cli manage create-gitapp-application --cpd_instance_ns=zen
@@ -17,8 +17,12 @@
     --memory_limit=400Mi
 ```
 
-curl -ko cpd-cli-workspace/olm-utils-workspace/work/mcp-gateway-forge.conf.yaml https://
-
-# cat cpd-cli-workspace/olm-utils-workspace/work/app-env-json.json  
-
+##### download proxy-config-yaml file:  
+```
+curl -ko cpd-cli-workspace/olm-utils-workspace/work/mcp-gateway-forge.conf.yaml https://raw.githubusercontent.com/shixuguang/mcp-gateway-forge/refs/heads/main/mcp-gateway-forge.conf.yaml
+```
+##### create app-env-json.json:  
+```
+$ cat cpd-cli-workspace/olm-utils-workspace/work/app-env-json.json  
 [{"name":"HOST","value":"0.0.0.0"},{"name":"JWT_SECRET_KEY","value":"my-test-key"},{"name":"BASIC_AUTH_USER","value":"admin@example.com"},{"name":"BASIC_AUTH_PASSWORD","value":"changeme"},{"name":"AUTH_REQUIRED","value":"true"},{"name":"DATABASE_URL","value":"sqlite:////data/mcp.db"},{"name":"SSL","value":"true"},{"name":"CERT_FILE","value":"/etc/certs/tls.crt"},{"name":"KEY_FILE","value":"/etc/certs/tls.key"},{"name": "MCPGATEWAY_UI_ENABLED","value":"true"},{"name":"MCPGATEWAY_ADMIN_API_ENABLED","value":"true"}]
+```
