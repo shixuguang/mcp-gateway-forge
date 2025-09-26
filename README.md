@@ -36,6 +36,10 @@
 
   ##### deploy postgresql  
 
+  - download postgresql template tar
+  ```
+    curl -ko cpd-cli-workspace/olm-utils-workspace/work/postgesql.template.tgz https://raw.githubusercontent.com/shixuguang/mcp-gateway-forge/refs/heads/main/postgresql.template.tgz
+  ```
   - create postgres app template parameters json file:
     ```
     $ cat cpd-cli-workspace/olm-utils-workspace/work/app-parameters-json.json  
@@ -46,7 +50,7 @@
     ```
     ./cpd-cli manage create-template-application --cpd_instance_ns=zen  \
         --app_name=postgresql-mcp-context-forge  \
-        --app_template=https://raw.githubusercontent.com/openshift/origin/master/examples/db-templates/postgresql-persistent-template.json  \
+        --app_template=/tmp/work/postgesql.template.tgz  \
         --app_template_parameters_json=/tmp/work/app-parameters-json.json \
         --cpu=400m  \
         --memory=200Mi  \
@@ -78,3 +82,4 @@
       --memory_limit=400Mi
     ```
 
+note: it'd be good mcp-context-forge create database for postgres, same as it does for sql-lite
